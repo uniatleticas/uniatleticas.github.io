@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cadastro - UniAtléticas</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/logincadastro.css">
+	<script type="text/javascript" src="../js/index.js"></script>
+</head>
+<body>
+<div id="cabecalho">
+	<a href="#"><img src="../img/logo.png"></a>	
+</div>
+<br>
+<div id="corpo">
+<form id="Formulario" action="../Login/login.html" method="POST">
+<br>
+<label>Cadastro</label>
+<br>
+<label>Nome</label>
+<input id="nome" type="text" required="true"></input>
+<br>
+<label>Sobrenome</label>
+<input id="sobrenome" type="text" required="true"></input>
+<br>
+<label>Senha</label>
+<input id="senha" type="password" required="true"></input>
+<br>
+<label>Confirmar Senha</label>
+<input id="confirmasenha" type="password" required="true"></input>
+<br>
+<label>Email</label>
+<input id="email" type="email" required="true"></input>
+<br>
+<label>Estado</label>
+<select id="estado" required="true">
+	<option disabled selected>Selecione seu Estado</option>
+	<option>Minas Gerais</option>
+</select>
+<br>
+<label>Cidade</label>
+<select id="cidade" required="true">
+	<option disabled selected>Selecione sua Cidade</option>
+	<option>Patos de Minas</option>
+	<option>Lagoa Formosa</option>
+	<option>Presidente Olegário</option>
+	<option>João Pinheiro</option>
+	<option>Carmo do Paraníba</option>
+</select>
+<br>
+<label>Curso</label>
+<select id="curso" required="true">
+	<option disabled selected>Selecione seu Curso</option>
+	<option>Sistemas de Informação</option>
+	<option>Agronomia</option>
+	<option>Engenharia Civil</option>
+</select>
+<br>
+<button id="cadastrar" type="submit">Cadastrar</button>
+<br>
+</form>
+<br>
+<button id="loginbtn" onclick="window.location.href='../Login/login.html'">Já possui uma Conta? Faça Login.</button>
+</div>
+</body>
+</html>

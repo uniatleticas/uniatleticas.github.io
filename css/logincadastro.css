@@ -1,0 +1,31 @@
+#Formulario{
+	border: 2px solid red;
+	background-color:deepskyblue;
+	width: 400px;
+	display:block;
+	margin-left: 1000px;
+}
+
+label{
+	text-align:center;
+	display:block;
+	font-weight: bold;
+}
+
+input,select,button{
+	display:block;
+	margin:auto;
+}
+
+body{
+	background-image:url('../img/fundo.jpg');
+	background-size: cover;
+}
+
+#loginbtn{
+	margin-left:1090px;
+}
+
+#cadastrobtn{
+	margin-left: 1065px;
+}
