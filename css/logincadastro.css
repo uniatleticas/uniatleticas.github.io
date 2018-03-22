@@ -1,15 +1,25 @@
+@font-face {
+    font-family: AlfaSlabOne;
+    src: url('../fonts/AlfaSlabOne-Regular.ttf');
+}
+
 #Formulario{
 	border: 2px solid red;
-	background-color:deepskyblue;
+	background-color:white;
 	width: 400px;
 	display:block;
 	margin-left: 1000px;
+}
+
+#Formulario > label{
+	font-size: 20px;
 }
 
 label{
 	text-align:center;
 	display:block;
 	font-weight: bold;
+	font-family: AlfaSlabOne;
 }
 
 input,select,button{
@@ -20,6 +30,7 @@ input,select,button{
 body{
 	background-image:url('../img/fundo.jpg');
 	background-size: cover;
+	overflow: hidden;
 }
 
 #loginbtn{
@@ -27,5 +38,10 @@ body{
 }
 
 #cadastrobtn{
-	margin-left: 1065px;
+	margin-left: 1100px;
+}
+
+#logo{
+	display:block;
+	margin:auto;
 }
