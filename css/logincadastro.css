@@ -3,23 +3,24 @@
     src: url('../fonts/AlfaSlabOne-Regular.ttf');
 }
 
-#Formulario{
-	border: 2px solid red;
-	background-color:white;
-	width: 400px;
-	display:block;
-	margin-left: 1000px;
-}
-
 #Formulario > label{
 	font-size: 20px;
+}
+
+.nav{
+	background-color: #00adef !important;
+}
+
+html,
+body,
+.login-box {
+  height: 100%;
 }
 
 label{
 	text-align:center;
 	display:block;
 	font-weight: bold;
-	font-family: AlfaSlabOne;
 }
 
 input,select,button{

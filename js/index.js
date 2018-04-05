@@ -1,3 +1,7 @@
+ $(document).ready(function(){
+    $('select').formSelect();
+  });
+ 
 function confere_cadastro(){
 	var senha = document.getElementById("senha").value;
 	var confirmasenha = document.getElementById("confirmasenha").value;
