@@ -7,7 +7,6 @@
  $(document).ready(function(){
     $('.sidenav').sidenav();
   });
-
 function confere_cadastro(){
 	var senha = document.getElementById("senha").value;
 	var confirmasenha = document.getElementById("confirmasenha").value;

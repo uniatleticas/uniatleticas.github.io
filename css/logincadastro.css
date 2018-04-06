@@ -7,6 +7,10 @@
 	font-size: 20px;
 }
 
+.navbar-fixed {
+   z-index: 999; 
+}
+
 .nav{
 	background-color: #00adef !important;
 }
