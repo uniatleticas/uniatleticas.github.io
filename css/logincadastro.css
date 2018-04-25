@@ -35,7 +35,6 @@ input,select,button{
 body{
 	background-image:url('../img/fundo.jpg');
 	background-size: cover;
-	overflow: hidden;
 }
 
 #loginbtn{
