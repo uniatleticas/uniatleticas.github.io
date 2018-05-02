@@ -55,14 +55,14 @@
           <li><a href="index.php"><i class="material-icons left">home</i>Home</a></li>
           <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
-          <li><a href="../sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
+          <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
           <li><a href="index.php"><i class="material-icons left">home</i>Home</a></li>
           <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
-          <li><a href="../sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
+          <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
       </div>
     </nav>
