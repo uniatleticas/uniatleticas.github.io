@@ -1,3 +1,10 @@
+<?php
+
+  $erro_usuario = isset($_GET['erro_usuario'])  ? $_GET['erro_usuario'] : 0;
+  $erro_email   = isset($_GET['erro_email'])  ? $_GET['erro_email'] : 0;
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,43 +48,57 @@
       	<img id="logo" src="../img/logo.png">
         <span class="card-title">Digite seus dados abaixo e clique em Cadastrar</span>
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s6 form-control">
+            <label for="usuario">Usuário</label>
+            <input type="text" class="validate form-control" id="usuario" name="usuario" required="required">
+            <?php
+              if($erro_usuario){ // 1/true 0/false
+                echo '<font style="color:#FF0000">Usuário já existe</font>';
+              }
+            ?>
+          </div>
+          <div class="input-field col s6 form-control">
             <label for="nome">Nome</label>
-            <input type="text" class="validate" name="nome" id="nome" required="required" />
+            <input type="text" class="validate form-control" name="nome" id="nome" required="required" />
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 form-control">
             <label for="sobrenome">Sobrenome</label>
-            <input type="text" class="validate" name="sobrenome" id="sobrenome" required="required" />
+            <input type="text" class="validate form-control" name="sobrenome" id="sobrenome" required="required" />
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 form-control">
             <label for="senha">Senha</label>
-            <input type="password" class="validate" name="senha" id="senha" required="required" />
+            <input type="password" class="validate form-control" name="senha" id="senha" required="required" />
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 form-control">
             <label for="confirmasenha">Confirmar Senha</label>
-            <input type="password" class="validate" name="confirmar_senha" id="confirmarsenha" required="required" />
+            <input type="password" class="validate form-control" name="confirmar_senha" id="confirmar_senha" required="required" />
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 form-control">
           	<label for="email">Email</label>
-          	<input type="email" class="validate" name="email" id="email" required="required"></input>
+          	<input type="email" class="validate form-control" name="email" id="email" required="required"></input>
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 form-control">
           	<label for="email">Confirmar Email</label>
-          	<input type="email" class="validate" name="confirmar_email" id="confirmaremail" required="required"></input>
+          	<input type="email" class="validate form-control" name="confirmar_email" id="confirmar_email" required="required"></input>
+            <?php
+              if($erro_email){
+                echo '<font style="color:#FF0000">Email já existe</font>';
+              }
+            ?>
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 form-control">
             <label for="text">Curso</label>
-            <input type="text" class="validate" name="curso" id="curso" required="required"></input>
+            <input type="text" class="validate form-control" name="curso" id="curso" required="required"></input>
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 form-control">
             <label for="text">Cidade</label>
-            <input type="text" class="validate" name="cidade" id="cidade" required="required"></input>
+            <input type="text" class="validate form-control" name="cidade" id="cidade" required="required"></input>
           </div>
         </div>
       </div>
       <div class="card-action right-align">
         <input type="reset" id="reset" class="btn-flat grey-text waves-effect">
-        <input type="submit" class="btn green waves-effect waves-light" value="Cadastrar">
+        <button type="submit" class="btn green waves-effect waves-light form-control">Cadastrar</button>
       </div>
     </form>
   </div>

@@ -16,6 +16,46 @@
 	<!-- Importando Materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+
+    <script>
+      $(document).ready( function(){
+
+        //verificar se os campos de usuário e senha foram devidamente preenchidos
+        $('#btn_login').click(function(){
+
+          var campo_vazio = false;
+
+          if($('#campo_usuario').val() ==''){
+            $('#campo_usuario').css({'border-color': '#A94442'});
+            campo_vazio=true;
+          }
+
+          else{
+            $('#campo_usuario').css({'border-color': '#CCC'});
+          }
+
+          if($('#campo_email').val() ==''){
+            $('#campo_email').css({'border-color': '#A94442'});
+            campo_vazio=true;
+          }
+
+          else{
+            $('#campo_email').css({'border-color': '#CCC'});
+          }
+
+          if($('#campo_senha').val() ==''){
+            $('#campo_senha').css({'border-color': '#A94442'});
+            campo_vazio=true;
+          }
+
+          else{
+            $('#campo_senha').css({'border-color': '#A94442'});
+          }
+
+          if(campo_vazio) return false;
+        });
+      });         
+    </script>
 </head>
 <body>
 <div class="navbar">
@@ -44,21 +84,21 @@
     <form method="post" action="validar_acesso.php" id="formLogin">
       <div class="card-content">
       	<img id="logo" src="../img/logo.png">
-        <span class="card-title">Digite seu email e senha para continuar</span>
+        <span class="card-title">Digite seu usuário e senha para continuar</span>
         <div class="row">
           <div class="input-field col s12">
-            <label for="email">Endereço de Email</label>
-            <input type="email" class="validate" name="campo_email" id="email" />
-          </div>
+            <label for="email">Usuário</label>
+              <input type="text" class="form-control validate" id="campo_usuario" name="usuario" placeholder="Usuario" />
+                </div>
           <div class="input-field col s12">
             <label for="password">Senha</label>
-            <input type="password" class="validate" name="campo_senha" id="password" />
-          </div>
+            <input type="password" class="form-control validate" id="campo_senha" name="senha" placeholder="Senha" />
+                </div>
         </div>
       </div>
       <div class="card-action right-align">
         <input type="reset" id="reset" class="btn-flat grey-text waves-effect">
-        <input type="submit" class="btn green waves-effect waves-light" value="Login">
+        <button type="submit" class="btn green waves-effect waves-light form-control">Login</button>
       </div>
 
       <?php
@@ -70,24 +110,5 @@
     </form>
   </div>
 </div>
-<!-- <div id="cabecalho">
-</div>
-<form id="Formulario" action="../index.php" method="POST">
-<br>
-<img id="logo" src="../img/logo.png">
-<br>
-<label>Email</label>
-<input id="email" type="email" name="email" required="true"></input>
-<br>
-<label>Senha</label>
-<input id="senha" type="password" required="true"></input>
-<br>
-<input type="image" src="../img/btn_entrar.png" alt="Submit" width="128" height="70"></input>
-<br>
-</form>
-<br>
-<input type="image" id="cadastrobtn" onclick="window.location.href='../Cadastro/cadastro.php'" src="../img/balao_cadastro.png" alt="Submit"></input>
-</div>
--->
 </body>
 </html>

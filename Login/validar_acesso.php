@@ -1,32 +1,33 @@
 <?php
 
+	session_start();
+
 	require_once('../db.class.php');
 
-	$nome = $_POST['nome'];
-	$email = $_POST['email'];
-	$senha = $_POST['senha'];
+	$usuario = $_POST['usuario'];
+	$senha = md5($_POST['senha']);
 
-	$sql = " SELECT * FROM usuarios WHERE nome = '$nome' AND email = '$email' AND senha = '$senha'";
+	$sql = " SELECT id, usuario FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha' ";
 
-	$objDB = new db();
-	$link = $objDB->conecta_mysql();
+	$objDb = new db();
+	$link = $objDb->conecta_mysql();
 
 	$resultado_id = mysqli_query($link, $sql);
 
 	if($resultado_id){
 		$dados_usuario = mysqli_fetch_array($resultado_id);
 
-		if(isset($dados_usuario['nome'])){
-			echo 'nome existe';
+		if(isset($dados_usuario['usuario'])){
+
+			$_SESSION['id_usuario'] = $dados_usuario['id'];
+			$_SESSION['usuario'] = $dados_usuario['usuario'];
+			
+			header('Location: ../perfil.php');
+
+		} else {
+			header('Location: ../index.php?erro=1');
 		}
-
-		else{
-			header('Location: index.php?erro=1');
-		}
-
-	}
-
-	else{
+	} else {
 		echo 'Erro na execução da consulta, favor entrar em contato com o admin do site';
 	}
 ?>
