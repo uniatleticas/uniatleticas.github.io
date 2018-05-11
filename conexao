@@ -1,0 +1,26 @@
+
+CREATE TABLE Usuarios (
+                Usuario_curso VARCHAR(20) NOT NULL,
+                senha VARCHAR NOT NULL,
+                confirma_senha VARCHAR NOT NULL,
+                nome VARCHAR NOT NULL,
+                sobrenome VARCHAR NOT NULL,
+                cidade VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                confirma_email VARCHAR NOT NULL,
+                PRIMARY KEY (Usuario_curso)
+);
+
+
+CREATE TABLE curso_1 (
+                Usuario_curso VARCHAR(20) NOT NULL,
+                atletica VARCHAR NOT NULL,
+                PRIMARY KEY (Usuario_curso)
+);
+
+
+ALTER TABLE curso_1 ADD CONSTRAINT usuarios_curso_1_fk
+FOREIGN KEY (Usuario_curso)
+REFERENCES Usuarios (Usuario_curso)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
