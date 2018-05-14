@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Perfil - UniAtléticas</title>
+	<title>Atlética - UniAtléticas</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/logincadastro.css">
@@ -116,22 +116,13 @@
                 </figure>
                 <div class="card-content">
                   <div class="row">                    
-                    <div class="col s3 offset-s2">                        
-                        <h4 class="card-title grey-text text-darken-4">Nome Sobrenome</h4>
-                        <p class="medium-small grey-text">Curso</p>                        
-                    </div>
-                    <div class="col s2 center-align">
-                        <h4 class="card-title grey-text text-darken-4">3º</h4>
-                        <p class="medium-small grey-text">Período</p>                        
+                    <div class="col s3 offset-s2">
+                    <h4 class="card-title grey-text text-darken-4">Atlética do Curso</h4>                       
                     </div>
                     <div class="col s2 center-align">
                         <h4 class="card-title grey-text text-darken-4">2580</h4>
-                        <p class="medium-small grey-text">Seguindo</p>                        
-                    </div>                    
-                    <div class="col s2 center-align">
-                        <h4 class="card-title grey-text text-darken-4">4000</h4>
-                        <p class="medium-small grey-text">Seguidores</p>                        
-                    </div>                    
+                        <p class="medium-small grey-text">Usuários</p>                        
+                    </div>                   
                     <div class="col s1 right-align">
                       <a class="btn-floating activator waves-effect waves-light darken-2 right">
                           <i class="mdi-action-perm-identity"></i>
@@ -156,24 +147,10 @@
                             <!-- Profile About  -->
                             <div class="card light-blue">
                               <div class="card-content white-text">
-                                <span class="card-title">Sobre Mim</span>
-                                <p>Pagina de teste, não espere nada de relevante aqui! :)</p>
+                                <span class="card-title">Sobre a Atlética</span>
+                                <p>SI Forever!</p>
                               </div>                  
             </div>
-            <ul id="profile-page-about-details" class="collection z-depth-1">
-            <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s5 grey-text darken-1"><i class="mdi-social-domain"></i> Mora em</div>
-                                  <div class="col s7 grey-text text-darken-4 right-align">Patos de Minas</div>
-                                </div>
-                              </li>
-                              <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s5 grey-text darken-1"><i class="mdi-social-cake"> </i>Aniversário</div>
-                                  <div class="col s7 grey-text text-darken-4 right-align">28/02/1998</div>
-                                </div>
-                              </li>
-            </ul>
             <ul id="profile-page-about-feed" class="collection z-depth-1">
                     <li class="collection-item">
                                 <div class="row">
