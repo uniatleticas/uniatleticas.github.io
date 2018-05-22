@@ -1,4 +1,4 @@
- //Inicializando funções do Materialize com jQuery
+ //Inicializando funï¿½ï¿½es do Materialize com jQuery
 
  $(document).ready(function(){
     $('select').formSelect();
@@ -12,6 +12,6 @@ function confere_cadastro(){
 	var confirmasenha = document.getElementById("confirmasenha").value;
 
 	if(senha != confirmasenha){
-		window.alert("Senhas não Conferem. Por favor,tente novamente.");
+		window.alert("Senhas nï¿½o Conferem. Por favor,tente novamente.");
 	}
 }

@@ -85,14 +85,14 @@
         <a href="index.php" class="brand-logo"><img id="logo" src="img/logo.png" width="128" height="72"></a>
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="index.php"><i class="material-icons left">home</i>Home</a></li>
+          <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
           <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
-          <li><a href="index.php"><i class="material-icons left">home</i>Home</a></li>
+          <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
           <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
@@ -213,28 +213,22 @@
                     <li class="collection-item">
                                 <div class="row">
                                   <div class="col s12 grey-text darken-1 center-align">Usuário</div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Feed de Notícias</a></div>
-                                </div>
-                              </li>
+                              </div></li>
                   <li class="collection-item">
                                 <div class="row">
                                   <div class="col s12 black-text darken-1 center-align"><a href="#">Mensagens</a></div>
                                 </div>
                               </li>
                   <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Configurações</a></div>
-                                </div>
-                  </li>
+                   <div class="row">
+                      <div class="col s12 black-text darken-1 center-align"><a href="perfil.php">Perfil</a></div>
+                   </div>
+                  </li>            
                   <li class="collection-item">
                                 <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Sair da Conta</div>
+                                  <div class="col s12 black-text darken-1 center-align"><a href="configuracoes.php">Configurações</a></div>
                                 </div>
-                  </li>
-                </ul>
+                  </li></ul>
                 <ul id="profile-page-about-feed" class="collection z-depth-1">
                     <li class="collection-item">
                                 <div class="row">

@@ -3,7 +3,7 @@
 class db {
 
 	//host
-	private $host = 'localhost';
+	private $host = 'localhost:3308'; //Porta 3308 usada apenas para testes,será removida na versão final!!
 
 	//usuario
 	private $usuario = 'root';
