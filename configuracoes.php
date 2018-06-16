@@ -1,3 +1,18 @@
+<?php
+  
+  session_start();
+
+  if(!isset($_SESSION['usuario'])){
+    header('Location: index.php?erro=1');
+  }
+
+  require_once('db.class.php');
+
+  $objDb = new db();
+  $link = $objDb->conecta_mysql();
+
+  $id_usuario = $_SESSION['id_usuario'];
+?>
 <html><head>
 	<title>Configurações - UniAtléticas</title>
 	<meta charset="utf-8">
@@ -105,14 +120,14 @@ function escondeEmail(){
         <ul class="right hide-on-med-and-down">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
           <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
-          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), gianvelox</a></li>
+          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
         <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
           <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
-          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), gianvelox</a></li>
+          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
       </div>
@@ -234,6 +249,7 @@ function escondeEmail(){
                 <!-- profile-page-wall-share -->
                 <div id="profile-page-wall-share" class="row">
                 <!--Senha-->
+                <form method="POST" action="alterarsenha.php">
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeSenha()">Alterar Senha</a>
                 <br>
@@ -241,11 +257,13 @@ function escondeEmail(){
                 Recomendamos que não compartilhe sua senha com ninguém.</span>
                 </p>
                 <div style="display:none;"id="senha">
-                <label style="color:white;" for="password">Senha Antiga:</label><input style="color:white; text-align:center;"type="password">
-                <label style="color:white;" for="password">Digite uma nova Senha:</label><input style="color:white; text-align:center;" type="password">
-                <label style="color:white;" for="password">Confirmar Senha:</label><input style="color:white; text-align:center;" type="password">                    
+                <label style="color:white;" for="text">Usuario:</label><input style="color:white; text-align:center;"type="text" name="usuario">
+                <label style="color:white;" for="password">Senha Antiga:</label><input style="color:white; text-align:center;"type="password" name="senha">
+                <label style="color:white;" for="password">Digite uma nova Senha:</label><input style="color:white; text-align:center;" type="password" name="novasenha">
+                <label style="color:white;" for="password">Confirme a nova Senha:</label><input style="color:white; text-align:center;" type="password" name="confirmarnovasenha">                    
                 <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
                 </div>
+                </form>
                 <!--Estado e Cidade-->
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeLocal()">Alterar Estado e Cidade</a>

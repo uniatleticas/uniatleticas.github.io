@@ -20,7 +20,6 @@
 	$sql.= " ORDER BY data_inclusao DESC "; 
 
 	$resultado_id = mysqli_query($link, $sql);
-
 	if($resultado_id){
 
 		while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){

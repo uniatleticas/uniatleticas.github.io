@@ -1,3 +1,41 @@
+<?php
+	
+	session_start();
+
+	if(!isset($_SESSION['usuario'])){
+		header('Location: index.php?erro=1');
+	}
+
+	require_once('db.class.php');
+
+	$objDb = new db();
+	$link = $objDb->conecta_mysql();
+
+	$id_usuario = $_SESSION['id_usuario'];
+
+	//--qtde de msgs
+	$sql = " SELECT COUNT(*) AS qtde_msgs FROM msg WHERE id_usuario = $id_usuario ";
+	$resultado_id = mysqli_query($link, $sql);
+	$qtde_msgs = 0;
+	if($resultado_id){
+		$registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC);
+		$qtde_msgs = $registro['qtde_msgs'];
+	} else {
+		echo 'Erro ao executar a query';
+	}
+
+	//--qtde de seguidores
+	$sql = " SELECT COUNT(*) AS qtde_seguires FROM usuarios_seguidores WHERE seguindo_id_usuario = $id_usuario ";
+	$resultado_id = mysqli_query($link, $sql);
+	$qtde_seguidores = 0;
+	if($resultado_id){
+		$registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC);
+		$qtde_seguidores = $registro['qtde_seguires'];
+	} else {
+		echo 'Erro ao executar a query';
+	}
+
+?>
 <html><head>
 	<title>Feed - UniAtléticas</title>
 	<meta charset="utf-8">
@@ -70,14 +108,14 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
           <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
-          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), gianvelox</a></li>
+          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
           <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
-          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), gianvelox</a></li>
+          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
       </div>

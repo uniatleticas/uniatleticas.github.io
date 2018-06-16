@@ -5,13 +5,27 @@
   if(!isset($_SESSION['usuario'])){
     header('Location: index.php?erro=1');
   }
-
   require_once('db.class.php');
 
   $objDb = new db();
   $link = $objDb->conecta_mysql();
-
   $id_usuario = $_SESSION['id_usuario'];
+  $nome = mysqli_query ($link,"SELECT nome FROM usuarios WHERE id ='$id_usuario'");
+  $rownome= mysqli_fetch_array($nome);
+  $getnome=$rownome['nome'];
+  $sobrenome = mysqli_query ($link,"SELECT sobrenome FROM usuarios WHERE id ='$id_usuario'");
+  $rowsobrenome= mysqli_fetch_array($sobrenome);
+  $getsobrenome=$rowsobrenome['sobrenome'];
+
+  $sql = " SELECT COUNT(*) AS qtde_seguires FROM usuarios_seguidores WHERE seguindo_id_usuario = $id_usuario ";
+	$resultado_id = mysqli_query($link, $sql);
+	$qtde_seguidores = 0;
+	if($resultado_id){
+		$registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC);
+		$qtde_seguidores = $registro['qtde_seguires'];
+	} else {
+		echo 'Erro ao executar a query';
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,6 +80,7 @@
 					});
 				}
 
+
 				atualizaMsg();
 
 			});
@@ -86,14 +101,14 @@
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
         <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
+          <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
+          <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
@@ -108,8 +123,8 @@
           <div id="profile-page" class="section">
             <!-- profile-page-header -->
             <div id="profile-page-header" class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="img/capas/si.png" alt="user background">                    
+                <div class="card-image waves-effect waves-block">
+                    <img src="img/capas/si.png" alt="user background">                    
                 </div>
                 <figure class="card-profile-image">
                     <img src="img/avatar.png" alt="profile image" class="circle z-depth-2 responsive-img activator">
@@ -117,37 +132,18 @@
                 <div class="card-content">
                   <div class="row">                    
                     <div class="col s3 offset-s2">                        
-                        <h4 class="card-title grey-text text-darken-4">Nome Sobrenome</h4>
+                        <h4 class="card-title grey-text text-darken-4" id="info"><?php echo $getnome?> <?php echo $getsobrenome?></h4>
                         <p class="medium-small grey-text">Curso</p>                        
                     </div>
                     <div class="col s2 center-align">
                         <h4 class="card-title grey-text text-darken-4">3º</h4>
                         <p class="medium-small grey-text">Período</p>                        
-                    </div>
+                    </div>                 
                     <div class="col s2 center-align">
-                        <h4 class="card-title grey-text text-darken-4">2580</h4>
-                        <p class="medium-small grey-text">Seguindo</p>                        
-                    </div>                    
-                    <div class="col s2 center-align">
-                        <h4 class="card-title grey-text text-darken-4">4000</h4>
+                        <h4 class="card-title grey-text text-darken-4"><?= $qtde_seguidores ?></h4>
                         <p class="medium-small grey-text">Seguidores</p>                        
                     </div>                    
-                    <div class="col s1 right-align">
-                      <a class="btn-floating activator waves-effect waves-light darken-2 right">
-                          <i class="mdi-action-perm-identity"></i>
-                      </a>
-                    </div>
                   </div>
-                </div>
-                <div class="card-reveal">
-                    <p>
-                      <span class="card-title grey-text text-darken-4">Usuário <i class="mdi-navigation-close right"></i></span>
-                    </p>
-
-                    <p>Teste.</p>
-                    
-                    <p><i class="mdi-action-perm-phone-msg cyan-text text-darken-2"></i> +55 34 9999-9999</p>
-                    <p><i class="mdi-communication-email cyan-text text-darken-2"></i> gianveloxsi@gmail.com</p>
                 </div>
             </div>
             <div id="profile-page-content" class="row">
@@ -238,11 +234,6 @@
                                   <div class="col s12 grey-text darken-1 center-align">Usuário</div>
                               </div></li>
                   <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Mensagens</a></div>
-                                </div>
-                              </li>
-                  <li class="collection-item">
                    <div class="row">
                       <div class="col s12 black-text darken-1 center-align"><a href="perfil.php">Perfil</a></div>
                    </div>
@@ -301,14 +292,7 @@
                           <label for="textarea" class="">Escreva sua mensagem aqui...</label>
                         </div>-->
                       </div>
-                      <div class="row">
-                        <div class="col s12 m6 share-icons">
-                          <a href="#"><i class="mdi-image-camera-alt"></i></a>
-                          <a href="#"><i class="mdi-action-account-circle"></i></a>
-                          <a href="#"><i class="mdi-hardware-keyboard-alt"></i></a>
-                          <a href="#"><i class="mdi-communication-location-on"></i></a>
-                        </div>
-                        <div class="col s12 m11 right-align">
+                     <div class="col s12 m11 right-align">
                            <!-- Dropdown Trigger -->
                             <a class='dropdown-button btn' href='#' data-activates='profliePost'><i class="mdi-social-public"></i> Público</a>
 
