@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: 15-Jun-2018 às 23:19
+-- Generation Time: 16-Jun-2018 às 23:06
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -25,23 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `atletica_si`
---
-
-DROP TABLE IF EXISTS `atletica_si`;
-CREATE TABLE IF NOT EXISTS `atletica_si` (
-  `id` int(11) NOT NULL,
-  `usuario` varchar(50) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `sobrenome` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `curso` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `msg`
 --
 
@@ -52,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `msg` (
   `msg` varchar(140) NOT NULL,
   `data_inclusao` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_msg`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `msg`
@@ -80,7 +63,32 @@ INSERT INTO `msg` (`id_msg`, `id_usuario`, `msg`, `data_inclusao`) VALUES
 (22, 9, 'oi', '2018-05-14 18:09:15'),
 (23, 9, 'oi', '2018-05-14 18:17:31'),
 (24, 7, 'oi', '2018-06-15 18:39:27'),
-(25, 10, 'teste php ok ;)', '2018-06-15 19:14:46');
+(25, 10, 'teste php ok ;)', '2018-06-15 19:14:46'),
+(26, 12, 'a', '2018-06-16 18:22:36');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `msg_agro`
+--
+
+DROP TABLE IF EXISTS `msg_agro`;
+CREATE TABLE IF NOT EXISTS `msg_agro` (
+  `id_msg` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `msg` varchar(140) NOT NULL,
+  `data_inclusao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_msg`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `msg_agro`
+--
+
+INSERT INTO `msg_agro` (`id_msg`, `id_usuario`, `msg`, `data_inclusao`) VALUES
+(1, 13, 'olá', NULL),
+(2, 13, 'ava', NULL),
+(3, 13, 'agro', NULL);
 
 -- --------------------------------------------------------
 
@@ -100,26 +108,26 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `confirmar_senha` varchar(32) NOT NULL,
   `curso` varchar(50) NOT NULL,
   `cidade` varchar(50) NOT NULL,
-  `novasenha` varchar(32) NOT NULL,
-  `confirmarnovasenha` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `nome`, `sobrenome`, `email`, `confirmar_email`, `senha`, `confirmar_senha`, `curso`, `cidade`, `novasenha`, `confirmarnovasenha`) VALUES
-(1, 'PhilBess', 'Philipe', 'Bessa de Carvalho', 'philipebessajp@gmail.com', 'philipebessajp@gmail.com', '16b58001e5de4f6cf709061245f8a5d1', '16b58001e5de4f6cf709061245f8a5d1', 'SI', 'JP', '', ''),
-(2, 'Mari', 'Maria', 'Clara', 'maria@gmail.com', 'maria@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'e10adc3949ba59abbe56e057f20f883e', 'SI', 'PM', '', ''),
-(3, 'Lari', 'Larissa', 'Maciel', 'larissa@gmail.com', 'larissa@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b', 'SI', 'JP', '', ''),
-(4, 'Dani', 'Daniel', 'Araujo', 'daniel@gmail.com', 'daniel@gmail.com', '202cb962ac59075b964b07152d234b70', '202cb962ac59075b964b07152d234b70', 'SI', 'JP', '', ''),
-(5, 'Jor', 'Jorge', 'Souza', 'jorge@gmail.com', 'jorge@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '827ccb0eea8a706c4c34a16891f84e7b', 'SI', 'JP', '', ''),
-(6, 'jcarlos', 'José', 'Carlos', 'jcarlos_2013@hotmail.com', 'jcarlos_2013@hotmail.com', 'fda51388cafc00ebd2b3d21b77e7e3ec', 'fda51388cafc00ebd2b3d21b77e7e3ec', 'SI', 'Patos de Minas', '', ''),
-(7, 'teste', 'teste', 'fulano', 'teste@teste.com', 'teste@teste.com', 'f9f240a02ee017ad04834e6516b8f2ce', 'f9f240a02ee017ad04834e6516b8f2ce', 'SI', 'Patos de Minas', '', ''),
-(8, 'teste2', 'Jonas', 'Carvalho', 'jonas@teste.com', 'jonas@teste.com', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', 'SI', 'Carmo do Paranaíba', '', ''),
-(9, 'gianvelox', 'Gian', 'Michel', 'gianveloxsi@gmail.com', 'gianveloxsi@gmail.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'SI', 'Patos de Minas', '', ''),
-(10, 'gian123', 'gian', 'Michel', 'gianveloxxsi@gmail.com', 'gianveloxxsi@gmail.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'SI', 'Patos de Minas', '', '');
+INSERT INTO `usuarios` (`id`, `usuario`, `nome`, `sobrenome`, `email`, `confirmar_email`, `senha`, `confirmar_senha`, `curso`, `cidade`) VALUES
+(1, 'PhilBess', 'Philipe', 'Bessa de Carvalho', 'philipebessajp@gmail.com', 'philipebessajp@gmail.com', '16b58001e5de4f6cf709061245f8a5d1', '16b58001e5de4f6cf709061245f8a5d1', 'SI', 'JP'),
+(2, 'Mari', 'Maria', 'Clara', 'maria@gmail.com', 'maria@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'e10adc3949ba59abbe56e057f20f883e', 'SI', 'PM'),
+(3, 'Lari', 'Larissa', 'Maciel', 'larissa@gmail.com', 'larissa@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b', 'SI', 'JP'),
+(4, 'Dani', 'Daniel', 'Araujo', 'daniel@gmail.com', 'daniel@gmail.com', '202cb962ac59075b964b07152d234b70', '202cb962ac59075b964b07152d234b70', 'SI', 'JP'),
+(5, 'Jor', 'Jorge', 'Souza', 'jorge@gmail.com', 'jorge@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '827ccb0eea8a706c4c34a16891f84e7b', 'SI', 'JP'),
+(6, 'jcarlos', 'José', 'Carlos', 'jcarlos_2013@hotmail.com', 'jcarlos_2013@hotmail.com', 'fda51388cafc00ebd2b3d21b77e7e3ec', 'fda51388cafc00ebd2b3d21b77e7e3ec', 'SI', 'Patos de Minas'),
+(7, 'teste', 'teste', 'fulano', 'teste@teste.com', 'teste@teste.com', 'f9f240a02ee017ad04834e6516b8f2ce', 'f9f240a02ee017ad04834e6516b8f2ce', 'SI', 'Patos de Minas'),
+(8, 'teste2', 'Jonas', 'Carvalho', 'jonas@teste.com', 'jonas@teste.com', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', 'SI', 'Carmo do Paranaíba'),
+(9, 'gianvelox', 'Gian', 'Michel', 'gianveloxsi@gmail.com', 'gianveloxsi@gmail.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'SI', 'Patos de Minas'),
+(10, 'gian123', 'gian', 'Michel', 'gianveloxxsi@gmail.com', 'gianveloxxsi@gmail.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'SI', 'Patos de Minas'),
+(12, 'carlos', 'Carlos', 'Mota', 'cm@gmail.com', 'cm@gmail.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'sistemasdeinformacao', 'Patos de Minas'),
+(13, 'agro', 'agro', 'agro', 'agro@teste.com', 'agro@teste.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'agronomia', 'Patos de Minas');
 
 -- --------------------------------------------------------
 
@@ -134,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `usuarios_seguidores` (
   `seguindo_id_usuario` int(11) NOT NULL,
   `data_registro` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_usuario_seguidor`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuarios_seguidores`
@@ -149,8 +157,9 @@ INSERT INTO `usuarios_seguidores` (`id_usuario_seguidor`, `id_usuario`, `seguind
 (17, 4, 2, '2018-04-18 21:06:48'),
 (18, 4, 3, '2018-04-18 21:06:53'),
 (20, 1, 4, '2018-04-18 21:54:56'),
-(21, 9, 6, '2018-06-15 19:16:17'),
-(22, 10, 6, '2018-06-15 19:18:54');
+(22, 10, 6, '2018-06-15 19:18:54'),
+(23, 9, 2, '2018-06-16 10:24:02'),
+(24, 9, 6, '2018-06-16 10:41:23');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
