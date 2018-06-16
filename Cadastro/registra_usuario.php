@@ -69,6 +69,7 @@
 		header('Location: ../Login/login.php');
 	} else {
 		echo 'Erro ao registrar o usuário!';
+		echo $curso;
 	}
 
 

@@ -10,10 +10,11 @@
 <head>
 	<title>Cadastro - UniAtléticas</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../css/logincadastro.css">
+  <link rel="stylesheet" type="text/css" href="../css/logincadastro.css">
+  <script type="text/javascript" src="../js/cidades.js"></script>
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="../js/materialize.min.js"></script>
-	<script type="text/javascript" src="../js/index.js"></script>
+  <script type="text/javascript" src="../js/materialize.min.js"></script>
+  <script type="text/javascript" src="../js/index.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Importando Materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -87,13 +88,15 @@
             ?>
           </div>
           <div class="input-field col s6 form-control">
-            <label for="text">Curso</label>
-            <input type="text" class="validate form-control" name="curso" id="curso" required="required"></input>
+          <select name="curso" id="curso" required="required">
+            <option value=sistemasdeinformacao>Sistemas de Informação</option>
+            <option value=engenhariacivil>Engenharia Civil</option>
+            <option value=agronomia>Agronomia</option>
+            </select>
           </div>
           <div class="input-field col s6 form-control">
-            <label for="text">Cidade</label>
-            <input type="text" class="validate form-control" name="cidade" id="cidade" required="required"></input>
-          </div>
+          <label for="text">Cidade</label>
+          	<input type="text" class="validate form-control" name="cidade" id="cidade" required="required"></input>
         </div>
       </div>
       <div class="card-action right-align">

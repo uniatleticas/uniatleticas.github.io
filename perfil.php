@@ -17,6 +17,22 @@
   $rowsobrenome= mysqli_fetch_array($sobrenome);
   $getsobrenome=$rowsobrenome['sobrenome'];
 
+  $curso = mysqli_query($link,"SELECT curso FROM usuarios WHERE id ='$id_usuario'");
+  $rowcurso = mysqli_fetch_array($curso);
+  $getcurso=$rowcurso['curso'];
+
+  if (isset($_POST['btn_atletica'])){
+  if($getcurso == 'sistemasdeinformacao'){
+    header("Refresh:0; url=atleticasi.php");
+  } else if($getcurso == 'engenhariacivil'){
+    header("Refresh:0; url=atleticasi.php");
+  }
+   else if($getcurso == 'agronomia'){
+    header("Refresh:0; url=atleticaagro.php");
+  }
+}
+
+
   $sql = " SELECT COUNT(*) AS qtde_seguires FROM usuarios_seguidores WHERE seguindo_id_usuario = $id_usuario ";
 	$resultado_id = mysqli_query($link, $sql);
 	$qtde_seguidores = 0;
@@ -67,7 +83,7 @@
 						});
 					}
 
-				});
+        });
 
 				function atualizaMsg(){
 					//carregar os msgs 
@@ -250,7 +266,19 @@
                               </li>
                   <li class="collection-item">
                                 <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Página Inicial</a></div>
+                              <form method="POST">
+                                    <div class="col s12 black-text darken-1 center-align"><button class="btn btn-default" id="btn_atletica" name="btn_atletica" type="submit">Pagina Inicial</button></div>
+                              </form>
+                              <?php if (isset($_POST['btn_atletica'])){
+                                  if($getcurso == 'sistemasdeinformacao'){
+                                    header("Refresh:0; url=atleticasi.php");
+                                  } else if($getcurso == 'engenhariacivil'){
+                                    header("Refresh:0; url=atleticasi.php");
+                                  }
+                                  else if($getcurso == 'agronomia'){
+                                    header("Refresh:0; url=atleticaagro.php");
+                                  }
+                                } ?>
                                 </div>
                               </li>
                   <li class="collection-item">

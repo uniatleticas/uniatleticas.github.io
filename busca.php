@@ -146,7 +146,7 @@
 	    				<form id="form_procurar_pessoas" class="input-group">
 	    					<input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control" placeholder="Quem você está procurando?" maxlength="140" style="color:white;"/>
 	    					<span class="input-group-btn">
-	    						<button class="btn btn-default" id="btn_procurar_pessoa" type="button">Procurar</button>
+	    						<button class="btn btn-default" id="btn_procurar_pessoa" type="button"><i class="material-icons left">search</i>Procurar</button>
 	    					</span>
 	    				</form>
 	    			</div>

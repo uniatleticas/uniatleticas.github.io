@@ -24,16 +24,12 @@
         <a href="index.php" class="brand-logo"><img id="logo" src="img/logo.png" width="128" height="72"></a>
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="index.php"><i class="material-icons left">home</i>Home</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
           <li><a href="Cadastro/cadastro.php"><i class="material-icons left">account_circle</i>Cadastro</a></li>
            <li class="<?= $erro == 1 ? 'open' : '' ?>">
           <li><a href="Login/login.php"><i class="material-icons left">exit_to_app</i>Login</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
-          <li><a href="index.php"><i class="material-icons left">home</i>Home</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
           <li><a href="Cadastro/cadastro.php"><i class="material-icons left">account_circle</i>Cadastro</a></li>
            <li class="<?= $erro == 1 ? 'open' : '' ?>">
           <li><a href="Login/login.php"><i class="material-icons left">exit_to_app</i>Login</a></li>
@@ -41,10 +37,8 @@
       </div>
     </nav>
   </div>
-<!--
-<button onclick="window.location.href='Login/login.php'">Login</button>
-<br>
-<button onclick="window.location.href='Cadastro/cadastro.php'">Cadastro</button>
--->
+<h4 style="text-align:center; color:white;">Bem-Vindo ao UniAtléticas!</h4>
+<h4 style="text-align:center; color:white;">Para entender como funciona o site, assista o vídeo abaixo:</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PhS72sR2q8k?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block; margin:auto;"></iframe>
 </body>
 </html>
