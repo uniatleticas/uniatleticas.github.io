@@ -10,8 +10,19 @@
 
   $objDb = new db();
   $link = $objDb->conecta_mysql();
-
   $id_usuario = $_SESSION['id_usuario'];
+  //Verifica se o usuario pertence a atletica, caso não pertença é redirecionado ao seu perfil.
+  $cursopagina = 'sistemasdeinformacao';
+  $curso = mysqli_query($link,"SELECT curso FROM usuarios WHERE id ='$id_usuario'");
+  $rowcurso = mysqli_fetch_array($curso);
+  $getcurso=$rowcurso['curso'];
+
+  if($cursopagina != $getcurso){
+    echo "<script language=\"javascript\">";
+    echo "alert('Acesso não permitido. Retornando ao seu Perfil.')";
+    echo "</script>";
+    header("Refresh:0; url=perfil.php");
+  }
 ?>
 <!DOCTYPE html>
 <html>

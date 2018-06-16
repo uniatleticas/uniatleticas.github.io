@@ -12,6 +12,17 @@
   $link = $objDb->conecta_mysql();
 
   $id_usuario = $_SESSION['id_usuario'];
+  $cursopagina = 'engenhariacivil';
+  $curso = mysqli_query($link,"SELECT curso FROM usuarios WHERE id ='$id_usuario'");
+  $rowcurso = mysqli_fetch_array($curso);
+  $getcurso=$rowcurso['curso'];
+
+  if($cursopagina != $getcurso){
+    echo "<script language=\"javascript\">";
+    echo "alert('Acesso não permitido. Retornando ao seu Perfil.')";
+    echo "</script>";
+    header("Refresh:0; url=perfil.php");
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -72,7 +83,7 @@
 
 		</script>
 </head>
-<body>
+<body id="body">
 	<style>
 	body{	
 	background: url('img/perfil.png');
