@@ -125,14 +125,14 @@ function escondeEmail(){
         <ul class="right hide-on-med-and-down">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
           <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
-          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
+          <li><a href="perfil.php"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
         <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
           <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
-          <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
+          <li><a href="perfil.php"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
       </div>
@@ -152,7 +152,7 @@ function escondeEmail(){
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeSenha()">Alterar Senha</a>
                 <br>
-                <span>Caso você não queira mais utlizar sua senha atual ou prefere maior segurança, altere sua senha. 
+                <span style="color:white;">Caso você não queira mais utlizar sua senha atual ou prefere maior segurança, altere sua senha. 
                 Recomendamos que não compartilhe sua senha com ninguém.</span>
                 </p>
                 <div style="display:none;"id="divsenha">
@@ -166,7 +166,7 @@ function escondeEmail(){
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeLocal()">Alterar Estado e Cidade</a>
                 <br>
-                <span>Se você mudou de cidade ou estado ou sua informação atual está incorreta, pedimos para que atualize sua cidade ou estado.</span>
+                <span style="color:white;">Se você mudou de cidade ou estado ou sua informação atual está incorreta, pedimos para que atualize sua cidade ou estado.</span>
                 </p>
                 <form action="cfg/alteraestadocidade.php" method="POST">
                 <div style="display:none" id="local">
@@ -192,7 +192,7 @@ function escondeEmail(){
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeEmail()">Alterar Email</a>
                 <br>
-                <span>Não usa mais seu email, ou deseja alterar? Clique aqui.</span>
+                <span style="color:white;">Não usa mais seu email, ou deseja alterar? Clique aqui.</span>
                 </p>
                 <form action="cfg/alteraemail.php" method="POST">
                 <div style="display:none" id="divemail">
@@ -205,14 +205,14 @@ function escondeEmail(){
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeErro()">Reportar Erro</a>
                 <br>
-                <span>Se você trocou alguma dessas informações e não houve mudança, ou seu nome, sobrenome esta incorreto ou qualquer outro erro, 
+                <span style="color:white;">Se você trocou alguma dessas informações e não houve mudança, ou seu nome, sobrenome esta incorreto ou qualquer outro erro, 
                 entre em contato conosco, deixe sua mensagem relatando seu erro, resolveremos o mais rapido possivel.</span>
                 </p>
                 <form action="envia_contato.php" method=POST>
                 <div style="display:none" id="reportarerro">
                 <label style="color:white;" for="text">Nome</label><input style="color:white; text-align:center;" type="text" name="nome">
                 <label style="color:white;" for="email">Email</label><input style="color:white; text-align:center;" type="email" name="email">
-                <label style="color:white;" for="text">Mensagem</label><textarea name="mensagem" rows="4" cols="50"></textarea>
+                <label style="color:white;" for="text">Mensagem</label><textarea style="color:white;" name="mensagem" rows="4" cols="50"></textarea>
                 <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Enviar</button>
                 </div>
                 </form>
