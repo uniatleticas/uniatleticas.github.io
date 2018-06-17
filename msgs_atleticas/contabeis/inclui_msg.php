@@ -18,7 +18,7 @@
 	$objDb = new db();
 	$link = $objDb->conecta_mysql();
 	
-	$sql = " INSERT INTO msg_agro(id_usuario, msg)values($id_usuario, '$texto_msg') ";
+	$sql = " INSERT INTO msg_contabeis(id_usuario, msg)values($id_usuario, '$texto_msg') ";
 
 	mysqli_query($link, $sql);
 

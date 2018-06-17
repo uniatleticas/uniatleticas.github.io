@@ -11,7 +11,11 @@
 	$objDb = new db();
 	$link = $objDb->conecta_mysql();
 
-	$id_usuario = $_SESSION['id_usuario'];
+  $id_usuario = $_SESSION['id_usuario'];
+  
+  $curso = mysqli_query($link,"SELECT curso FROM usuarios WHERE id ='$id_usuario'");
+  $rowcurso = mysqli_fetch_array($curso);
+  $getcurso=$rowcurso['curso'];
 
 	//--qtde de msgs
 	$sql = " SELECT COUNT(*) AS qtde_msgs FROM msg WHERE id_usuario = $id_usuario ";
@@ -107,14 +111,14 @@
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
+          <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
+          <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
@@ -131,74 +135,11 @@
             <div id="profile-page-content" class="row">
                           <!-- profile-page-sidebar-->
                           <div id="profile-page-sidebar" class="col s12 m4">
-            <ul id="profile-page-about-feed" class="collection z-depth-1">
-                    <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s5 grey-text darken-1">Amigos</div>
-                              </div></li>
-				<li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Meu Status</div>
-                                  <i class="col s6 right-align black-text"> </i><select>
-									<option selected="selected" value="online">Online</option>
-									<option value="ausente">Ausente</option>
-									<option value="offline">Offline</option>
-								</select>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Vinicius Rodrigues</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align yellow-text"> </i>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Vinicius Langholz</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">José Carlos</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align green-text"> </i>
-                                </div>
-                  </li>
-				<li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Philipe Bessa</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Bruna Menezes</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align yellow-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Joice Fonseca</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align green-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Mônica Ribeiro</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                  </li>
-                </ul>
                 <ul id="profile-page-about-feed" class="collection z-depth-1">
                     <li class="collection-item">
                                 <div class="row">
                                   <div class="col s12 grey-text darken-1 center-align">Usuário</div>
                               </div></li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Mensagens</a></div>
-                                </div>
-                              </li>
                   <li class="collection-item">
                    <div class="row">
                       <div class="col s12 black-text darken-1 center-align"><a href="perfil.php">Perfil</a></div>
@@ -214,9 +155,27 @@
                                 <div class="row">
                                   <div class="col s12 grey-text darken-1 center-align">Atlética</div>
                               </div></li>
-                  </a><li class="collection-item"><a href="#">
-                                </a><div class="row"><a href="#">
-                                  </a><div class="col s12 black-text darken-1 center-align"><a href="#"></a><a href="#">Página Inicial</a></div>
+                  </a> <li class="collection-item">
+                                <div class="row">
+                              <form method="POST">
+                                    <div class="col s12 black-text darken-1 center-align"><button class="btn btn-default" id="btn_atletica" name="btn_atletica" type="submit">Pagina Inicial</button></div>
+                              </form>
+                              <?php if (isset($_POST['btn_atletica'])){
+                                  if($getcurso == 'sistemasdeinformacao'){
+                                    echo "<script language=\"javascript\">";
+                                    echo "window.location.href=\"atleticasi.php\"";
+                                    echo "</script>";
+                                  } else if($getcurso == 'engenhariacivil'){
+                                    echo "<script language=\"javascript\">";
+                                    echo "window.location.href=\"atleticaengcivil.php\"";
+                                    echo "</script>";
+                                  }
+                                  else if($getcurso == 'contabeis'){
+                                    echo "<script language=\"javascript\">";
+                                    echo "window.location.href=\"atleticacontabeis.php\"";
+                                    echo "</script>";
+                                  }
+                                } ?>
                                 </div>
                               </li>
                   <li class="collection-item">

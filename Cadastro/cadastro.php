@@ -11,9 +11,9 @@
 	<title>Cadastro - UniAtléticas</title>
 	<meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../css/logincadastro.css">
-  <script type="text/javascript" src="../js/cidades.js"></script>
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="../js/materialize.min.js"></script>
+   <script type="text/javascript" src="../js/cidade-estados-brasil.min.js"></script>
   <script type="text/javascript" src="../js/index.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Importando Materialize -->
@@ -28,14 +28,12 @@
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="../index.php"><i class="material-icons left">home</i>Home</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
           <li><a href="cadastro.php"><i class="material-icons left">account_circle</i>Cadastro</a></li>
           <li><a href="../Login/login.php"><i class="material-icons left">exit_to_app</i>Login</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
           <li><a href="../index.php"><i class="material-icons left">home</i>Home</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
           <li><a href="cadastro.php"><i class="material-icons left">account_circle</i>Cadastro</a></li>
           <li><a href="../Login/login.php"><i class="material-icons left">exit_to_app</i>Login</a></li>
         </ul>
@@ -91,13 +89,28 @@
           <select name="curso" id="curso" required="required">
             <option value=sistemasdeinformacao>Sistemas de Informação</option>
             <option value=engenhariacivil>Engenharia Civil</option>
-            <option value=agronomia>Agronomia</option>
+            <option value=contabeis>Ciências Contabéis</option>
             </select>
           </div>
           <div class="input-field col s6 form-control">
-          <label for="text">Cidade</label>
-          	<input type="text" class="validate form-control" name="cidade" id="cidade" required="required"></input>
-        </div>
+          <select class="browser-default" id="lista_estados" name="estado"></select>
+          </div>
+          <div class="input-field col s6 form-control">
+          <select class="browser-default" id="lista_cidades" name="cidade"></select>
+          </div>          
+          <script>
+          new statesCitiesBR({
+          states: {
+            elementID: "lista_estados",
+            defaultOption: "Selecione um Estado"
+          },
+          cities: {
+            elementID: "lista_cidades",
+            state: "auto",
+            defaultOption: "Selecione uma Cidade"
+          }
+          });
+          </script>
       </div>
       <div class="card-action right-align">
         <input type="reset" id="reset" class="btn-flat grey-text waves-effect">
@@ -148,7 +161,7 @@
 <select id="curso" required="true">
 	<option disabled selected>Selecione seu Curso</option>
 	<option>Sistemas de Informação</option>
-	<option>Agronomia</option>
+	<option>contabeis</option>
 	<option>Engenharia Civil</option>
 </select>
 <br>

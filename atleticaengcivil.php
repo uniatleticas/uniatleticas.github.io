@@ -54,7 +54,7 @@
 					if($('#texto_msg').val().length > 0){
 						
 						$.ajax({
-							url: 'inclui_msg.php',
+							url: 'msgs_atleticas/engcivil/inclui_msg.php',
 							method: 'post',
 							data: $('#form_msg').serialize(),
 							success: function(data) {
@@ -70,14 +70,26 @@
 					//carregar os msgs 
 
 					$.ajax({
-						url: 'get_msg.php',
+						url: 'msgs_atleticas/engcivil/get_msg.php',
 						success: function(data) {
 							$('#msgs').html(data);
 						}
 					});
 				}
 
+        function carregaMembros(){
+					//carregar os membros
+
+					$.ajax({
+						url: 'msgs_atleticas/engcivil/get_membros.php',
+						success: function(data) {
+							$('#users').html(data);
+						}
+					});
+				}
+
 				atualizaMsg();
+        carregaMembros();
 
 			});
 
@@ -97,14 +109,14 @@
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
+          <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
+          <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
@@ -120,106 +132,29 @@
             <!-- profile-page-header -->
             <div id="profile-page-header" class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="img/capas/si.png" alt="user background">                    
+                    <img class="activator" src="img/capas/engenharias_atletica.jpg" alt="user background">                    
                 </div>
                 <figure class="card-profile-image">
-                    <img src="img/avatar.png" alt="profile image" class="circle z-depth-2 responsive-img activator">
+                    <img src="img/engenharias_avatar.jpg" alt="profile image" class="circle z-depth-2 responsive-img activator">
                 </figure>
                 <div class="card-content">
                   <div class="row">                    
                     <div class="col s3 offset-s2">
                     <h4 class="card-title grey-text text-darken-4">Atlética do Curso</h4>                       
                     </div>
-                    <div class="col s2 center-align">
-                        <h4 class="card-title grey-text text-darken-4">2580</h4>
-                        <p class="medium-small grey-text">Usuários</p>                        
-                    </div>                   
-                    <div class="col s1 right-align">
-                      <a class="btn-floating activator waves-effect waves-light darken-2 right">
-                          <i class="mdi-action-perm-identity"></i>
-                      </a>
-                    </div>
-                  </div>
+                   </div>
                 </div>
-                <div class="card-reveal">
-                    <p>
-                      <span class="card-title grey-text text-darken-4">Usuário <i class="mdi-navigation-close right"></i></span>
-                    </p>
-
-                    <p>Teste.</p>
-                    
-                    <p><i class="mdi-action-perm-phone-msg cyan-text text-darken-2"></i> +55 34 9999-9999</p>
-                    <p><i class="mdi-communication-email cyan-text text-darken-2"></i> gianveloxsi@gmail.com</p>
-                </div>
-            </div>
-            <div id="profile-page-content" class="row">
+                <div id="profile-page-content" class="row">
                           <!-- profile-page-sidebar-->
                           <div id="profile-page-sidebar" class="col s12 m4">
                             <!-- Profile About  -->
                             <div class="card light-blue">
                               <div class="card-content white-text">
                                 <span class="card-title">Sobre a Atlética</span>
-                                <p>SI Forever!</p>
+                                <p>Bem-vindo a AAAEU!</p>
                               </div>                  
             </div>
-            <ul id="profile-page-about-feed" class="collection z-depth-1">
-                    <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s5 grey-text darken-1">Amigos</div>
-                              </li>
-				<li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Meu Status</div>
-                                  <i class="col s6 right-align black-text"> </i><select>
-									<option selected="selected" value="online">Online</option>
-									<option value="ausente">Ausente</option>
-									<option value="offline">Offline</option>
-								</select>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Vinicius Rodrigues</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align yellow-text"> </i>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Vinicius Langholz</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">José Carlos</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align green-text"> </i>
-                                </div>
-                  </li>
-				<li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Philipe Bessa</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Bruna Menezes</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align yellow-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Joice Fonseca</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align green-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Mônica Ribeiro</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                  </li>
-                </ul>
+            <ul id="users" class="collection z-depth-1"></ul>
                 <ul id="profile-page-about-feed" class="collection z-depth-1">
                     <li class="collection-item">
                                 <div class="row">
@@ -274,7 +209,7 @@
                     <div id="UpdateStatus" class="tab-content col s12  grey lighten-4">
                       <div class="row">
                         <div class="col s2">
-                          <img src="img/avatar.png" alt="" class="circle responsive-img valign profile-image-post">
+                          <img src="img/engenharias_avatar.jpg" alt="" class="circle responsive-img valign profile-image-post">
                         </div>
                         <div class="input-field col s10">
 	    		                <div class="panel panel-default">
@@ -290,21 +225,6 @@
                         </div>-->
                       </div>
                       <div class="row">
-                        <div class="col s12 m6 share-icons">
-                          <a href="#"><i class="mdi-image-camera-alt"></i></a>
-                          <a href="#"><i class="mdi-action-account-circle"></i></a>
-                          <a href="#"><i class="mdi-hardware-keyboard-alt"></i></a>
-                          <a href="#"><i class="mdi-communication-location-on"></i></a>
-                        </div>
-                        <div class="col s12 m11 right-align">
-                           <!-- Dropdown Trigger -->
-                            <a class='dropdown-button btn' href='#' data-activates='profliePost'><i class="mdi-social-public"></i> Público</a>
-
-                            <!-- Dropdown Structure -->
-                            <ul id='profliePost' class='dropdown-content'>
-                              <li><a href="#!"><i class="mdi-social-public"></i> Público</a></li>
-                              <li><a href="#!"><i class="mdi-action-face-unlock"></i> Atlética</a></li>
-                            </ul>
                             <span class="input-group-btn">
 	    						            <button class="btn btn-default" id="btn_msg" type="button"><i class="mdi-maps-rate-review left"></i>Postar</button>
 	    					            </span>

@@ -12,6 +12,9 @@
   $link = $objDb->conecta_mysql();
 
   $id_usuario = $_SESSION['id_usuario'];
+  $curso = mysqli_query($link,"SELECT curso FROM usuarios WHERE id ='$id_usuario'");
+  $rowcurso = mysqli_fetch_array($curso);
+  $getcurso=$rowcurso['curso'];
 ?>
 <html><head>
 	<title>Configurações - UniAtléticas</title>
@@ -20,6 +23,8 @@
 	<link rel="stylesheet" type="text/css" href="css/logincadastro.css">
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/cidade-estados-brasil.min.js"></script>
+  <script type="text/javascript" src="js/cidades.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<link href="css/materialize-custom.css" type="text/css" rel="stylesheet" media="screen,projection">
   	<link href="css/demo/style.css" type="text/css" rel="stylesheet" media="screen,projection">  
@@ -34,7 +39,7 @@
     <script type="text/javascript">
 
     function escondeSenha() {
-	  var senha = document.getElementById("senha");
+	  var senha = document.getElementById("divsenha");
 	  
 	  if (senha.style.display === "none") {
 			senha.style.display = "block";
@@ -61,7 +66,7 @@
   }
 
 function escondeEmail(){
-    var email = document.getElementById("email");
+    var email = document.getElementById("divemail");
 	  if (email.style.display === "none") {
 	    email.style.display = "block";
     } else {
@@ -97,7 +102,7 @@ function escondeEmail(){
 							$('#msgs').html(data);
 						}
 					});
-				}
+        }
 
 				atualizaMsg();
 
@@ -119,14 +124,14 @@ function escondeEmail(){
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
+          <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
         <!-- Menu Responsivo -->
         <ul class="sidenav" id="mobile">
         <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
-          <li><a href="#"><i class="material-icons left">help</i>Ajuda</a></li>
+          <li><a href="busca.php"><i class="material-icons left">search</i>Buscar Usuários</a></li>
           <li><a href="#"><i class="material-icons left">account_circle</i>Bem-vindo(a), <?= $_SESSION['usuario'] ?></a></li>
           <li><a href="sair.php"><i class="material-icons left">exit_to_app</i>Sair</a></li>
         </ul>
@@ -139,125 +144,18 @@ function escondeEmail(){
         <div class="container">
 
         <h4 style="color:white;">Configurações</h4>
-
-          <div id="profile-page" class="section">
-            <!-- profile-page-header -->
-            <div id="profile-page-content" class="row">
-                          <!-- profile-page-sidebar-->
-                          <div id="profile-page-sidebar" class="col s12 m4">
-            <ul id="profile-page-about-feed" class="collection z-depth-1">
-                    <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s5 grey-text darken-1">Amigos</div>
-                              </div></li>
-				<li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Meu Status</div>
-                                  <i class="col s6 right-align black-text"> </i><select>
-									<option selected="selected" value="online">Online</option>
-									<option value="ausente">Ausente</option>
-									<option value="offline">Offline</option>
-								</select>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Vinicius Rodrigues</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align yellow-text"> </i>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Vinicius Langholz</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">José Carlos</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align green-text"> </i>
-                                </div>
-                  </li>
-				<li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Philipe Bessa</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Bruna Menezes</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align yellow-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Joice Fonseca</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align green-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Mônica Ribeiro</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                  </li>
-                </ul>
-                <ul id="profile-page-about-feed" class="collection z-depth-1">
-                    <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 grey-text darken-1 center-align">Usuário</div>
-                              </div></li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Mensagens</a></div>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                   <div class="row">
-                      <div class="col s12 black-text darken-1 center-align"><a href="perfil.php">Perfil</a></div>
-                   </div>
-                  </li>            
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="configuracoes.php">Configurações</a></div>
-                                </div>
-                  </li></ul><a href="#">
-                </a><ul id="profile-page-about-feed" class="collection z-depth-1"><a href="#">
-                    <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 grey-text darken-1 center-align">Atlética</div>
-                              </div></li>
-                  </a><li class="collection-item"><a href="#">
-                                </a><div class="row"><a href="#">
-                                  </a><div class="col s12 black-text darken-1 center-align"><a href="#"></a><a href="#">Página Inicial</a></div>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Loja Virtual</a></div>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Sair da Atlética</a></div>
-                                </div>
-                  </li>
-                </ul>
-            </div>
             <div id="profile-page-wall" class="col s12 m8">
                 <!-- profile-page-wall-share -->
                 <div id="profile-page-wall-share" class="row">
                 <!--Senha-->
-                <form method="POST" action="alterarsenha.php">
+                <form method="POST" action="cfg/alterasenha.php">
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeSenha()">Alterar Senha</a>
                 <br>
                 <span>Caso você não queira mais utlizar sua senha atual ou prefere maior segurança, altere sua senha. 
                 Recomendamos que não compartilhe sua senha com ninguém.</span>
                 </p>
-                <div style="display:none;"id="senha">
-                <label style="color:white;" for="text">Usuario:</label><input style="color:white; text-align:center;"type="text" name="usuario">
+                <div style="display:none;"id="divsenha">
                 <label style="color:white;" for="password">Senha Antiga:</label><input style="color:white; text-align:center;"type="password" name="senha">
                 <label style="color:white;" for="password">Digite uma nova Senha:</label><input style="color:white; text-align:center;" type="password" name="novasenha">
                 <label style="color:white;" for="password">Confirme a nova Senha:</label><input style="color:white; text-align:center;" type="password" name="confirmarnovasenha">                    
@@ -270,21 +168,39 @@ function escondeEmail(){
                 <br>
                 <span>Se você mudou de cidade ou estado ou sua informação atual está incorreta, pedimos para que atualize sua cidade ou estado.</span>
                 </p>
+                <form action="cfg/alteraestadocidade.php" method="POST">
                 <div style="display:none" id="local">
-                <label style="color:white;" for="text">Estado</label><input style="color:white; text-align:center;" type="text">
-                <label style="color:white;" for="text">Cidade</label><input style="color:white; text-align:center;" type="text">
+                <label style="color:white;" for="text">Estado</label><select class="browser-default" id="lista_estados" name="estado"></select>
+                <label style="color:white;" for="text">Cidade</label><select class="browser-default" id="lista_cidades" name="cidade"></select>
+                <script>
+                new statesCitiesBR({
+                states: {
+                  elementID: "lista_estados",
+                  defaultOption: "Selecione um Estado"
+                },
+                cities: {
+                  elementID: "lista_cidades",
+                  state: "auto",
+                  defaultOption: "Selecione uma Cidade"
+                }
+                });
+                </script>
                 <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
                 </div>
+                </form>
                 <!--Email-->
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeEmail()">Alterar Email</a>
                 <br>
                 <span>Não usa mais seu email, ou deseja alterar? Clique aqui.</span>
                 </p>
-                <div style="display:none" id="email">
-                <label style="color:white;" for="email">Email</label><input style="color:white; text-align:center;" type="email">
+                <form action="cfg/alteraemail.php" method="POST">
+                <div style="display:none" id="divemail">
+                <label style="color:white;" for="email">Email Antigo</label><input style="color:white; text-align:center;" type="email" name="email">
+                <label style="color:white;" for="email">Novo Email</label><input style="color:white; text-align:center;" type="email" name="novoemail">
                 <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
                 </div>
+                </form>
                 <!--Reportar Erro-->
                 <p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeErro()">Reportar Erro</a>
@@ -292,12 +208,14 @@ function escondeEmail(){
                 <span>Se você trocou alguma dessas informações e não houve mudança, ou seu nome, sobrenome esta incorreto ou qualquer outro erro, 
                 entre em contato conosco, deixe sua mensagem relatando seu erro, resolveremos o mais rapido possivel.</span>
                 </p>
+                <form action="envia_contato.php" method=POST>
                 <div style="display:none" id="reportarerro">
-                <label style="color:white;" for="text">Nome</label><input style="color:white; text-align:center;" type="text">
-                <label style="color:white;" for="email">Email</label><input style="color:white; text-align:center;" type="email">
-                <label style="color:white;" for="text">Mensagem</label><input style="color:white; text-align:center;" type="text">
+                <label style="color:white;" for="text">Nome</label><input style="color:white; text-align:center;" type="text" name="nome">
+                <label style="color:white;" for="email">Email</label><input style="color:white; text-align:center;" type="email" name="email">
+                <label style="color:white;" for="text">Mensagem</label><textarea name="mensagem" rows="4" cols="50"></textarea>
                 <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Enviar</button>
                 </div>
+                </form>
               </div>
               <!--/ profile-page-wall -->
 
@@ -321,29 +239,6 @@ function escondeEmail(){
   </footer>
   <!-- END FOOTER -->
 
-
-
-    <!-- ================================================
-    Scripts
-    ================================================ -->
-    
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="js/demo/jquery-1.11.2.min.js"></script>    
-    <!--materialize js-->
-    <script type="text/javascript" src="js/demo/materialize.js"></script>
-    <!--prism-->
-    <script type="text/javascript" src="js/demo/prism.js"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="js/demo/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <!-- chartist -->
-    <script type="text/javascript" src="js/demo/plugins/chartist-js/chartist.min.js"></script>  
-
-    <!-- sparkline -->
-    <script type="text/javascript" src="js/demo/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script type="text/javascript" src="js/demo/plugins/sparkline/sparkline-script.js"></script>
-
-     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
 
 
 <div class="hiddendiv common"></div></body></html>

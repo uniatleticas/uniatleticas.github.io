@@ -10,6 +10,7 @@
 	$senha = md5($_POST['senha']);
 	$confirmar_senha = md5($_POST['confirmar_senha']);
 	$curso = $_POST['curso'];
+	$estado = $_POST['estado'];
 	$cidade = $_POST['cidade'];
 
 	$objDb = new db();
@@ -61,15 +62,13 @@
 		die();
 	}
 
-	$sql = "insert into usuarios(usuario, nome, sobrenome, email, confirmar_email, senha, confirmar_senha, curso, cidade) values ('$usuario', '$nome', '$sobrenome', '$email', '$confirmar_email', '$confirmar_senha', '$senha', '$curso', '$cidade')";
+	$sql = "insert into usuarios(usuario, nome, sobrenome, email, confirmar_email, senha, confirmar_senha, curso, estado, cidade) values ('$usuario', '$nome', '$sobrenome', '$email', '$confirmar_email', '$confirmar_senha', '$senha', '$curso', '$estado', '$cidade')";
 
 	//executar a query
 	if(mysqli_query($link, $sql)){
 		echo 'Usuário registrado com sucesso!';
-		header('Location: ../Login/login.php');
 	} else {
 		echo 'Erro ao registrar o usuário!';
-		echo $curso;
 	}
 
 

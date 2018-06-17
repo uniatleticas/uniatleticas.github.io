@@ -16,22 +16,21 @@
   $sobrenome = mysqli_query ($link,"SELECT sobrenome FROM usuarios WHERE id ='$id_usuario'");
   $rowsobrenome= mysqli_fetch_array($sobrenome);
   $getsobrenome=$rowsobrenome['sobrenome'];
-
+  $cidade = mysqli_query ($link,"SELECT cidade FROM usuarios WHERE id ='$id_usuario'");
+  $rowcidade= mysqli_fetch_array($cidade);
+  $getcidade=$rowcidade['cidade'];
   $curso = mysqli_query($link,"SELECT curso FROM usuarios WHERE id ='$id_usuario'");
   $rowcurso = mysqli_fetch_array($curso);
   $getcurso=$rowcurso['curso'];
-
-  if (isset($_POST['btn_atletica'])){
+  $curso_user ='';
   if($getcurso == 'sistemasdeinformacao'){
-    header("Refresh:0; url=atleticasi.php");
-  } else if($getcurso == 'engenhariacivil'){
-    header("Refresh:0; url=atleticasi.php");
-  }
-   else if($getcurso == 'agronomia'){
-    header("Refresh:0; url=atleticaagro.php");
-  }
-}
-
+    $curso_user = 'Sistemas de Informação';
+    } else if($getcurso == 'engenhariacivil'){
+      $curso_user = 'Engenharia Civil';
+    }
+    else if($getcurso == 'contabeis'){
+      $curso_user = 'Ciências Contabéis';
+    }
 
   $sql = " SELECT COUNT(*) AS qtde_seguires FROM usuarios_seguidores WHERE seguindo_id_usuario = $id_usuario ";
 	$resultado_id = mysqli_query($link, $sql);
@@ -96,7 +95,6 @@
 					});
 				}
 
-
 				atualizaMsg();
 
 			});
@@ -140,23 +138,38 @@
             <!-- profile-page-header -->
             <div id="profile-page-header" class="card">
                 <div class="card-image waves-effect waves-block">
-                    <img src="img/capas/si.png" alt="user background">                    
+                   <?php if($getcurso == 'sistemasdeinformacao'){
+                            echo "<img src=\"img/capas/si_usuario.jpg\" id=\"capa_user\">";
+                            } else if($getcurso == 'engenhariacivil'){
+                              echo "<img src=\"img/capas/engenharias_usuario.jpg\" id=\"capa_user\">";
+                            }
+                            else if($getcurso == 'contabeis'){
+                              echo "<img src=\"img/capas/contabeis_usuario.jpg\" id=\"capa_user\">";
+                            } ?>                    
                 </div>
                 <figure class="card-profile-image">
-                    <img src="img/avatar.png" alt="profile image" class="circle z-depth-2 responsive-img activator">
+                <?php if($getcurso == 'sistemasdeinformacao'){
+                            echo "<img src=\"img/si_avatar.jpg\" id=\"capa_user\" class=\"circle z-depth-2 responsive-img activator\">";
+                            } else if($getcurso == 'engenhariacivil'){
+                              echo "<img src=\"img/engenharias_avatar.jpg\" id=\"capa_user\" class=\"circle z-depth-2 responsive-img activator\">";
+                            }
+                            else if($getcurso == 'contabeis'){
+                              echo "<img src=\"img/contabeis_avatar.jpg\" id=\"capa_user\" class=\"circle z-depth-2 responsive-img activator\">";
+                            } ?>     
+                    <!--<img src="img/avatar.png" alt="profile image" class="circle z-depth-2 responsive-img activator">-->
                 </figure>
                 <div class="card-content">
                   <div class="row">                    
-                    <div class="col s3 offset-s2">                        
+                    <div class="col s3 offset-s2" id="pinfo">                        
                         <h4 class="card-title grey-text text-darken-4" id="info"><?php echo $getnome?> <?php echo $getsobrenome?></h4>
-                        <p class="medium-small grey-text">Curso</p>                        
+                        <p class="medium-small grey-text" id="curso"><?php echo $curso_user ?></p>                        
                     </div>
                     <div class="col s2 center-align">
                         <h4 class="card-title grey-text text-darken-4">3º</h4>
                         <p class="medium-small grey-text">Período</p>                        
                     </div>                 
                     <div class="col s2 center-align">
-                        <h4 class="card-title grey-text text-darken-4"><?= $qtde_seguidores ?></h4>
+                        <h4 class="card-title grey-text text-darken-4"><?php echo $qtde_seguidores ?></h4>
                         <p class="medium-small grey-text">Seguidores</p>                        
                     </div>                    
                   </div>
@@ -176,74 +189,10 @@
             <li class="collection-item">
                                 <div class="row">
                                   <div class="col s5 grey-text darken-1"><i class="mdi-social-domain"></i> Mora em</div>
-                                  <div class="col s7 grey-text text-darken-4 right-align">Patos de Minas</div>
-                                </div>
-                              </li>
-                              <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s5 grey-text darken-1"><i class="mdi-social-cake"> </i>Aniversário</div>
-                                  <div class="col s7 grey-text text-darken-4 right-align">28/02/1998</div>
+                                  <div class="col s7 grey-text text-darken-4 right-align"><?php echo $getcidade ?></div>
                                 </div>
                               </li>
             </ul>
-            <ul id="profile-page-about-feed" class="collection z-depth-1">
-                    <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s5 grey-text darken-1">Amigos</div>
-                              </li>
-				<li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Meu Status</div>
-                                  <i class="col s6 right-align black-text"> </i><select>
-									<option selected="selected" value="online">Online</option>
-									<option value="ausente">Ausente</option>
-									<option value="offline">Offline</option>
-								</select>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Vinicius Rodrigues</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align yellow-text"> </i>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Vinicius Langholz</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                              </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">José Carlos</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align green-text"> </i>
-                                </div>
-                  </li>
-				<li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Philipe Bessa</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Bruna Menezes</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align yellow-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Joice Fonseca</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align green-text"> </i>
-                                </div>
-                  </li>
-				  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s6 black-text darken-1">Mônica Ribeiro</div>
-                                  <i class="col s6 mdi-image-brightness-1 right-align red-text"> </i>
-                                </div>
-                  </li>
-                </ul>
                 <ul id="profile-page-about-feed" class="collection z-depth-1">
                     <li class="collection-item">
                                 <div class="row">
@@ -271,12 +220,18 @@
                               </form>
                               <?php if (isset($_POST['btn_atletica'])){
                                   if($getcurso == 'sistemasdeinformacao'){
-                                    header("Refresh:0; url=atleticasi.php");
+                                    echo "<script language=\"javascript\">";
+                                    echo "window.location.href=\"atleticasi.php\"";
+                                    echo "</script>";
                                   } else if($getcurso == 'engenhariacivil'){
-                                    header("Refresh:0; url=atleticasi.php");
+                                    echo "<script language=\"javascript\">";
+                                    echo "window.location.href=\"atleticaengcivil.php\"";
+                                    echo "</script>";
                                   }
-                                  else if($getcurso == 'agronomia'){
-                                    header("Refresh:0; url=atleticaagro.php");
+                                  else if($getcurso == 'contabeis'){
+                                    echo "<script language=\"javascript\">";
+                                    echo "window.location.href=\"atleticacontabeis.php\"";
+                                    echo "</script>";
                                   }
                                 } ?>
                                 </div>
