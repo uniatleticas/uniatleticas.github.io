@@ -111,7 +111,7 @@
 	<div class="navbar"> <!-- navbar-fixed não funciona! -->
     <nav class="nav">
       <div class="nav-wrapper">
-        <a href="index.php" class="brand-logo"><img id="logo" src="img/logo.png" width="128" height="72"></a>
+        <a href="feed.php" class="brand-logo"><img id="logo" src="img/logo.png" width="128" height="72"></a>
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
         <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
@@ -241,11 +241,7 @@
                                   <div class="col s12 black-text darken-1 center-align"><a href="#">Loja Virtual</a></div>
                                 </div>
                               </li>
-                  <li class="collection-item">
-                                <div class="row">
-                                  <div class="col s12 black-text darken-1 center-align"><a href="#">Sair da Atlética</a></div>
-                                </div>
-                  </li>
+                  
                 </ul>
             </div>
             <div id="profile-page-wall" class="col s12 m8">

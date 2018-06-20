@@ -21,13 +21,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/logincadastro.css">
+  <script type="text/javascript" src="js/materialize.min.js"></script>
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
+  <script src="http://malsup.github.com/jquery.form.js"></script> 
   <script type="text/javascript" src="js/cidade-estados-brasil.min.js"></script>
-  <script type="text/javascript" src="js/cidades.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<link href="css/materialize-custom.css" type="text/css" rel="stylesheet" media="screen,projection">
-  	<link href="css/demo/style.css" type="text/css" rel="stylesheet" media="screen,projection">  
+  <script type="text/javascript" src="js/index.js"></script>
+  <link href="css/materialize-custom.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/demo/style.css" type="text/css" rel="stylesheet" media="screen,projection">  
     <link href="css/demo/custom-style.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="css/demo/style-horizontal.css" type="text/css" rel="stylesheet" media="screen,projection">
   	<link href="css/demo/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -37,43 +37,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
     <script type="text/javascript">
-
-    function escondeSenha() {
-	  var senha = document.getElementById("divsenha");
-	  
-	  if (senha.style.display === "none") {
-			senha.style.display = "block";
-	  } else {
-			senha.style.display = "none";
-	  }
-}
-    function escondeLocal(){
-    var local = document.getElementById("local");
-	  if (local.style.display === "none") {
-	    local.style.display = "block";
-    } else {
-		local.style.display = "none";
-    }
-  }
-
-  function escondeErro(){
-    var erro = document.getElementById("reportarerro");
-	  if (erro.style.display === "none") {
-	    erro.style.display = "block";
-    } else {
-		erro.style.display = "none";
-    }
-  }
-
-function escondeEmail(){
-    var email = document.getElementById("divemail");
-	  if (email.style.display === "none") {
-	    email.style.display = "block";
-    } else {
-		email.style.display = "none";
-    }
-  }
 			$(document).ready( function(){
+
 
 				//associar o evento de click ao botão
 				$('#btn_msg').click( function(){
@@ -93,6 +58,11 @@ function escondeEmail(){
 
 				});
 
+        $(document).ready(function(){
+  $('ul.tabs').tabs();
+});
+        
+
 				function atualizaMsg(){
 					//carregar os msgs 
 
@@ -104,6 +74,7 @@ function escondeEmail(){
 					});
         }
 
+       }
 				atualizaMsg();
 
 			});
@@ -120,7 +91,7 @@ function escondeEmail(){
 	<div class="navbar"> <!-- navbar-fixed não funciona! -->
     <nav class="nav">
       <div class="nav-wrapper">
-        <a href="index.php" class="brand-logo"><img id="logo" src="img/logo.png" width="128" height="72"></a>
+        <a href="feed.php" class="brand-logo"><img id="logo" src="img/logo.png" width="128" height="72"></a>
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
@@ -138,71 +109,129 @@ function escondeEmail(){
       </div>
     </nav>
   </div>
-<section id="content">        
+<section id="content">      
+<h4 style="color:black; text-align:center;">Configurações</h4>  
 
         <!--start container-->
         <div class="container">
-
-        <h4 style="color:white;">Configurações</h4>
-            <div id="profile-page-wall" class="col s12 m8">
-                <!-- profile-page-wall-share -->
-                <div id="profile-page-wall-share" class="row">
-                <!--Senha-->
-                <form method="POST" action="cfg/alterasenha.php">
-                <p style="display:block; text-align:center; color:black;">
-                <a style="color:yellow; text-align:center;" onclick="escondeSenha()">Alterar Senha</a>
-                <br>
-                <span style="color:white;">Caso você não queira mais utlizar sua senha atual ou prefere maior segurança, altere sua senha. 
-                Recomendamos que não compartilhe sua senha com ninguém.</span>
-                </p>
-                <div style="display:none;"id="divsenha">
-                <label style="color:white;" for="password">Senha Antiga:</label><input style="color:white; text-align:center;"type="password" name="senha">
-                <label style="color:white;" for="password">Digite uma nova Senha:</label><input style="color:white; text-align:center;" type="password" name="novasenha">
-                <label style="color:white;" for="password">Confirme a nova Senha:</label><input style="color:white; text-align:center;" type="password" name="confirmarnovasenha">                    
-                <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
-                </div>
-                </form>
-                <!--Estado e Cidade-->
-                <p style="display:block; text-align:center; color:black;">
-                <a style="color:yellow; text-align:center;" onclick="escondeLocal()">Alterar Estado e Cidade</a>
-                <br>
-                <span style="color:white;">Se você mudou de cidade ou estado ou sua informação atual está incorreta, pedimos para que atualize sua cidade ou estado.</span>
-                </p>
-                <form action="cfg/alteraestadocidade.php" method="POST">
-                <div style="display:none" id="local">
-                <label style="color:white;" for="text">Estado</label><select class="browser-default" id="lista_estados" name="estado"></select>
-                <label style="color:white;" for="text">Cidade</label><select class="browser-default" id="lista_cidades" name="cidade"></select>
+        <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#divsenha"><i class="material-icons center tiny">lock</i> Senha</a></li>
+        <li class="tab col s3"><a href="#divlocal"><i class="material-icons center tiny">map</i> Localização</a></li>
+        <li class="tab col s3"><a href="#divemail"><i class="material-icons center tiny">email</i> Email</a></li>
+        <li class="tab col s3"><a href="#divreportar"><i class="material-icons center tiny">bug_report</i> Reportar Erro</a></li>
+      </ul>
+    </div>
+    <div id="divsenha" class="col s12">
+        <div class="col s12">
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <p style="display:block; text-align:center; color:black;">
+        <br>
+        <span style="color:black;">Caso você não queira mais utlizar sua senha atual ou prefere maior segurança, altere sua senha. 
+        Recomendamos que não compartilhe sua senha com ninguém.</span>
+        </p>
+        <div class="card-content">
+        <form method="POST" action="cfg/alterasenha.php">        
+        <div>
+          <label style="color:black;" for="password">Senha Antiga:</label><input style="color:black; text-align:center;"type="password" name="senha">
+          <label style="color:black;" for="password">Digite uma nova Senha:</label><input style="color:black; text-align:center;" type="password" name="novasenha">
+           <label style="color:black;" for="password">Confirme a nova Senha:</label><input style="color:black; text-align:center;" type="password" name="confirmarnovasenha">                    
+           <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
+        </div>
+        </form>
+     </div>
+</div>
+</div>
+</div>
+</div>
+<div id="divlocal" class="col s12">
+        <div class="col s12">
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <p style="display:block; text-align:center; color:black;">
+        <br>
+        <span style="color:black;">Se você mudou de cidade ou estado ou sua informação atual está incorreta, pedimos para que atualize sua cidade ou estado.</span>
+        </p>
+        <div class="card-content">
+        <form method="POST" action="cfg/alteraestadocidade.php">        
+        <div>
+        <label style="color:black;" for="text">Estado</label><select class="browser-default" id="estado" name="estado"></select>
+                <label style="color:black;" for="text">Cidade</label><select class="browser-default" id="cidade" name="cidade"></select>
                 <script>
                 new statesCitiesBR({
                 states: {
-                  elementID: "lista_estados",
+                  elementID: "estado",
                   defaultOption: "Selecione um Estado"
                 },
                 cities: {
-                  elementID: "lista_cidades",
+                  elementID: "cidade",
                   state: "auto",
                   defaultOption: "Selecione uma Cidade"
                 }
                 });
-                </script>
-                <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
-                </div>
-                </form>
-                <!--Email-->
-                <p style="display:block; text-align:center; color:black;">
-                <a style="color:yellow; text-align:center;" onclick="escondeEmail()">Alterar Email</a>
+                </script>                    
+           <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
+        </div>
+        </form>
+     </div>
+</div>
+</div>
+</div>
+</div>
+<div id="divemail" class="col s12">
+        <div class="col s12">
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <p style="display:block; text-align:center; color:black;">
+        <br>
+        <span style="color:black;">Não usa mais seu email, ou deseja alterar?</span>
+        </p>
+        <div class="card-content">
+        <form method="POST" action="cfg/alteraemail.php">        
+        <div>
+        <label style="color:black;" for="email">Email Antigo</label>
+                <input style="color:black; text-align:center;" type="email" name="email">
+                <label style="color:black;" for="email">Novo Email</label>
+                <input style="color:black; text-align:center;" type="email" name="novoemail">
+           <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
+        </div>
+        </form>
+     </div>
+</div>
+</div>
+</div>
+</div>
+    <div id="divreportar" class="col s12"><div class="col s12">
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <p style="display:block; text-align:center; color:black;">
+        <br>
+        <span style="color:black;">Se você trocou alguma dessas informações e não houve mudança, ou seu nome, sobrenome esta incorreto ou qualquer outro erro, 
+                entre em contato conosco, deixe sua mensagem relatando seu erro, resolveremos o mais rapido possivel.</span>
+        </p>
+        <div class="card-content">
+        <form method="POST" action="cfg/envia_contato.php">        
+        <div>
+        <label style="color:black;" for="text">Nome</label><input style="color:black; text-align:center;" type="text" name="nome">
+                <label style="color:black;" for="email">Email</label><input style="color:black; text-align:center;" type="email" name="email">
+                <label style="color:black;" for="text">Mensagem</label><textarea style="color:black;" name="mensagem" rows="10" cols="50"></textarea>
                 <br>
-                <span style="color:white;">Não usa mais seu email, ou deseja alterar? Clique aqui.</span>
-                </p>
-                <form action="cfg/alteraemail.php" method="POST">
-                <div style="display:none" id="divemail">
-                <label style="color:white;" for="email">Email Antigo</label><input style="color:white; text-align:center;" type="email" name="email">
-                <label style="color:white;" for="email">Novo Email</label><input style="color:white; text-align:center;" type="email" name="novoemail">
                 <button type="submit" class="btn green waves-effect waves-light form-control" style="display:block; margin:auto;">Alterar</button>
-                </div>
-                </form>
+        </div>
+        </form>
+     </div>
+</div>
+</div>
+</div>
+</div>
+  </div>
+
+                
+                
                 <!--Reportar Erro-->
-                <p style="display:block; text-align:center; color:black;">
+                <!--<p style="display:block; text-align:center; color:black;">
                 <a style="color:yellow; text-align:center;" onclick="escondeErro()">Reportar Erro</a>
                 <br>
                 <span style="color:white;">Se você trocou alguma dessas informações e não houve mudança, ou seu nome, sobrenome esta incorreto ou qualquer outro erro, 
@@ -224,9 +253,10 @@ function escondeEmail(){
         </div>
         </div>
         <!--end container-->
+        
       </section>
       <!-- END CONTENT -->
-
+      
       <!-- //////////////////////////////////////////////////////////////////////////// -->
 
   <!-- START FOOTER -->
@@ -239,6 +269,32 @@ function escondeEmail(){
   </footer>
   <!-- END FOOTER -->
 
+ <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="js/demo/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="js/demo/materialize.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="js/demo/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="js/demo/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- chartist -->
+    <script type="text/javascript" src="js/demo/plugins/chartist-js/chartist.min.js"></script>  
+
+    <!-- sparkline -->
+    <script type="text/javascript" src="js/demo/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="js/demo/plugins/sparkline/sparkline-script.js"></script>
+
+     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="js/demo/plugins.js"></script>
+ <script>
+$(document).ready(function(){
+  $('ul.tabs').tabs();
+});
+</script>
 
 
 <div class="hiddendiv common"></div></body></html>

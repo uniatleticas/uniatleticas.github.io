@@ -112,14 +112,14 @@
 <body>
 	<style>
 	body{	
-	background: url('img/perfil.jpg');
+	background: url('img/perfil.png');
 	overflow: scroll;
 	}
 </style>
 	<div class="navbar"> <!-- navbar-fixed não funciona! -->
     <nav class="nav">
       <div class="nav-wrapper">
-        <a href="index.php" class="brand-logo"><img id="logo" src="img/logo.png" width="128" height="72"></a>
+        <a href="feed.php" class="brand-logo"><img id="logo" src="img/logo.png" width="128" height="72"></a>
         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
         <li><a href="feed.php"><i class="material-icons left">home</i>Feed</a></li>
@@ -139,30 +139,37 @@
   </div>
 
   <div class="container">
-	    	   
-            <div class="col-md-6">
-	    		<div class="panel panel-default">
-	    			<div class="panel-body">
-	    				<form id="form_procurar_pessoas" class="input-group">
-	    					<input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control" placeholder="Quem você está procurando?" maxlength="140" style="color:white;"/>
+
+  <div id="divbusca" class="col s12">
+	  	<div class="col s12">
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <p style="display:block; text-align:center; color:black;">
+        <br>
+        <span style="color:black;">Digite o nome do usuário que você procura</span>
+        </p>
+        <div class="card-content">
+        <form id="form_procurar_pessoas" class="input-group">
+	    					<input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control" placeholder="Quem você está procurando?" maxlength="140" style="color:black;"/>
 	    					<span class="input-group-btn">
-	    						<button class="btn btn-default" id="btn_procurar_pessoa" type="button"><i class="material-icons left">search</i>Procurar</button>
+	    						<button class="btn btn-default" id="btn_procurar_pessoa" type="button" style="display:block; margin:auto;"><i class="material-icons left">search</i>Procurar</button>
 	    					</span>
 	    				</form>
-	    			</div>
-	    		</div>
-
-	    		<div id="pessoas" class="list-group"></div>
-
-			</div>
-			<div class="col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body">
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
-
+     </div>
+</div>
+</div>
+</div>
+</div>
+<div class="col s12">
+<div class="card horizontal">
+<div class="card-stacked">
+<div class="card-content">
+<div id="pessoas" class="col s12">
+</div>
+</div>
+</div>
+</div>
+</div>
+			
 	</body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: 17-Jun-2018 às 21:34
+-- Generation Time: 17-Jun-2018 às 22:55
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `msg` (
   `msg` varchar(140) NOT NULL,
   `data_inclusao` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_msg`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `msg`
@@ -65,7 +65,8 @@ INSERT INTO `msg` (`id_msg`, `id_usuario`, `msg`, `data_inclusao`) VALUES
 (24, 7, 'oi', '2018-06-15 18:39:27'),
 (25, 10, 'teste php ok ;)', '2018-06-15 19:14:46'),
 (26, 12, 'a', '2018-06-16 18:22:36'),
-(27, 13, 'não vai aparecer na atletica', '2018-06-17 09:50:06');
+(27, 13, 'não vai aparecer na atletica', '2018-06-17 09:50:06'),
+(28, 14, 'comida', '2018-06-17 19:29:52');
 
 -- --------------------------------------------------------
 
@@ -80,14 +81,15 @@ CREATE TABLE IF NOT EXISTS `msg_contabeis` (
   `msg` varchar(140) NOT NULL,
   `data_inclusao` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_msg`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `msg_contabeis`
 --
 
 INSERT INTO `msg_contabeis` (`id_msg`, `id_usuario`, `msg`, `data_inclusao`) VALUES
-(6, 14, 'olá', '2018-06-17 13:25:39');
+(6, 14, 'olá', '2018-06-17 13:25:39'),
+(7, 14, 'ok', '2018-06-17 19:30:37');
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,14 @@ CREATE TABLE IF NOT EXISTS `msg_si` (
   `msg` varchar(140) NOT NULL,
   `data_inclusao` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_msg`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `msg_si`
+--
+
+INSERT INTO `msg_si` (`id_msg`, `id_usuario`, `msg`, `data_inclusao`) VALUES
+(1, 12, 'di intirin', '2018-06-17 19:34:49');
 
 -- --------------------------------------------------------
 
@@ -139,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `estado` varchar(50) NOT NULL,
   `cidade` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuarios`
@@ -159,7 +168,8 @@ INSERT INTO `usuarios` (`id`, `usuario`, `nome`, `sobrenome`, `email`, `confirma
 (12, 'carlos', 'Carlos', 'Mota', 'cmx@gmail.com', 'cm@gmail.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'sistemasdeinformacao', '', 'Patos de Minas'),
 (13, 'agro', 'agro', 'agro', 'agro@teste.com', 'agro@teste.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'agronomia', '', 'Patos de Minas'),
 (14, 'gg', 'Gusta', 'Mucho', 'ggmucho@gmail.com', 'ggmucho@gmail.com', 'a8e0a09388d92d2a17633e4e5adbdc66', 'a8e0a09388d92d2a17633e4e5adbdc66', 'contabeis', '', 'Patos de Minas'),
-(15, 'test', 'teste', 'teste', 'teste@test.com', 'teste@test.com', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', 'engenhariacivil', 'Paraíba', 'Brejo dos Santos');
+(15, 'test', 'teste', 'teste', 'teste@test.com', 'teste@test.com', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', 'engenhariacivil', 'Paraíba', 'Brejo dos Santos'),
+(16, 'gffmln', 'Geraldo', 'Lourdinha', 'gffmln@gmail.com', 'gffmln@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', 'engenhariacivil', 'Minas Gerais', 'Patos de Minas');
 
 -- --------------------------------------------------------
 
@@ -174,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `usuarios_seguidores` (
   `seguindo_id_usuario` int(11) NOT NULL,
   `data_registro` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_usuario_seguidor`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuarios_seguidores`
@@ -195,7 +205,8 @@ INSERT INTO `usuarios_seguidores` (`id_usuario_seguidor`, `id_usuario`, `seguind
 (25, 12, 13, '2018-06-17 10:57:26'),
 (26, 13, 12, '2018-06-17 11:05:39'),
 (27, 9, 12, '2018-06-17 11:06:51'),
-(28, 10, 9, '2018-06-17 11:14:24');
+(28, 10, 9, '2018-06-17 11:14:24'),
+(29, 14, 9, '2018-06-17 19:30:10');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

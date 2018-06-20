@@ -23,7 +23,6 @@
 	$resultado_id = mysqli_query($link, $sql);
 
 	if($resultado_id){
-
 		while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
 			echo '<a href="#" class="list-group-item">';
 				echo '<strong>'.$registro['usuario'].'</strong> <small> - '.$registro['email'].'</small>';
@@ -42,9 +41,6 @@
 
 					echo '<button type="button" id="btn_seguir_'.$registro['id'].'" style="display: '.$btn_seguir_display.'" class="btn btn-default btn_seguir" data-id_usuario="'.$registro['id'].'">Seguir</button>';
 					echo '<button type="button" id="btn_deixar_seguir_'.$registro['id'].'" style="display: '.$btn_deixar_seguir_display.'" class="btn btn-primary btn_deixar_seguir" data-id_usuario="'.$registro['id'].'">Deixar de Seguir</button>';
-				echo '</p>';
-				echo '<div class="clearfix"></div>';
-			echo '</a>';
 		}
 
 	} else {

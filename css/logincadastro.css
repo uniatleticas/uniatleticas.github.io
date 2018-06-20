@@ -22,10 +22,10 @@ body,
 }
 
 .list-group-item-heading,small{
-	color:white !important;
+	color:black !important;
 }
 .list-group-item-text{
-	color: white !important;
+	color: black !important;
 }
 
 label{
@@ -55,3 +55,8 @@ body{
 	display:block;
 	margin:auto;
 }
+
+.carousel .carousel-item{
+	width:100%;
+  }
+
